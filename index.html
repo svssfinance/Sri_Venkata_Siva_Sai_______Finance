@@ -132,18 +132,85 @@
     .rep-header { background: #f8fafc; padding: 15px 25px; font-weight: 800; color: var(--secondary); border-bottom: 1px solid var(--border); font-size: 14px; display:flex; justify-content: space-between;}
     .rep-sub { padding: 15px 25px; background: #f1f5f9; text-align: right; font-weight: 800; font-size: 15px; color: var(--secondary); border-top: 2px solid var(--border);}
     
-    @media print { 
+        @media print { 
+        /* 1. Force A4 Landscape & Margins */
+        @page { size: A4 landscape; margin: 10mm; } 
+
         #topNav, #globalHeader, .btn, .no-print, .nav-links, .brand { display: none !important; } 
         body { display:block; height: auto; overflow: visible; background:#fff; color:#000;}
         #appWrapper { display:block; overflow:visible; }
         #mainContent { overflow: visible; padding:0;} 
         .card, .page-container { box-shadow: none; border: none; padding: 0; margin: 0; background:#fff;} 
         #rcPreviewBox { border: none !important; box-shadow: none !important; margin: 0 !important; max-width: 100% !important; padding: 0 !important; }
-        #duesTb tr:nth-child(4n) { break-after: page; page-break-after: always; }
-        #duesTb tr { page-break-inside: avoid; }
-        .rep-section { border: 1px solid #000; border-radius: 0;}
-        .rep-header, .rep-sub { background: #eee !important; color: #000 !important; -webkit-print-color-adjust: exact; }
+        
+        /* 2. Fix Table Squishing Issue */
+        .table-wrap { border: none !important; overflow: visible !important; margin-top: 0 !important; }
+        table { width: 100% !important; border-collapse: collapse !important; }
+        
+        /* 3. Padding and Font Size for 4 Rows */
+        th, td {
+            padding: 8px 6px !important; /* Padding penchanu 4 rows neat ga fit avvadaniki */
+            font-size: 10px !important; 
+            line-height: 1.4 !important;
+            border: 1px solid #333 !important; 
+            color: #000 !important;
+            vertical-align: middle !important;
+        }
+        th { font-size: 11px !important; background-color: #f1f5f9 !important; -webkit-print-color-adjust: exact; }
+
+        .profile-summary b { font-size: 11px !important; color: #000 !important; }
+        .profile-summary span { font-size: 9px !important; color: #444 !important; display: block !important; margin-top: 2px !important; }
+        
+        /* 4. EXACTLY 4 ROWS PER PAGE LOGIC */
+        #duesTb tr { page-break-inside: avoid !important; }
+        #duesTb tr:nth-child(4n) { break-after: page !important; page-break-after: always !important; }
+
+        /* 5. Tag colors for print */
+        .tag { padding: 4px 8px !important; font-size: 10px !important; border: 1px solid #999 !important; }
+
+        .rep-section { border: 1px solid #000; border-radius: 0; margin-bottom: 15px !important;}
+        .rep-header, .rep-sub { background: #eee !important; color: #000 !important; padding: 8px 15px !important; -webkit-print-color-adjust: exact; }
     }
+    @media print { 
+        /* 1. Force A4 Landscape & Margins */
+        @page { size: A4 landscape; margin: 10mm; } 
+
+        #topNav, #globalHeader, .btn, .no-print, .nav-links, .brand { display: none !important; } 
+        body { display:block; height: auto; overflow: visible; background:#fff; color:#000;}
+        #appWrapper { display:block; overflow:visible; }
+        #mainContent { overflow: visible; padding:0;} 
+        .card, .page-container { box-shadow: none; border: none; padding: 0; margin: 0; background:#fff;} 
+        #rcPreviewBox { border: none !important; box-shadow: none !important; margin: 0 !important; max-width: 100% !important; padding: 0 !important; }
+        
+        /* 2. Fix Table Squishing Issue */
+        .table-wrap { border: none !important; overflow: visible !important; margin-top: 0 !important; }
+        table { width: 100% !important; border-collapse: collapse !important; }
+        
+        /* 3. Padding and Font Size for 4 Rows */
+        th, td {
+            padding: 8px 6px !important; /* Padding penchanu 4 rows neat ga fit avvadaniki */
+            font-size: 10px !important; 
+            line-height: 1.4 !important;
+            border: 1px solid #333 !important; 
+            color: #000 !important;
+            vertical-align: middle !important;
+        }
+        th { font-size: 11px !important; background-color: #f1f5f9 !important; -webkit-print-color-adjust: exact; }
+
+        .profile-summary b { font-size: 11px !important; color: #000 !important; }
+        .profile-summary span { font-size: 9px !important; color: #444 !important; display: block !important; margin-top: 2px !important; }
+        
+        /* 4. EXACTLY 4 ROWS PER PAGE LOGIC */
+        #duesTb tr { page-break-inside: avoid !important; }
+        #duesTb tr:nth-child(4n) { break-after: page !important; page-break-after: always !important; }
+
+        /* 5. Tag colors for print */
+        .tag { padding: 4px 8px !important; font-size: 10px !important; border: 1px solid #999 !important; }
+
+        .rep-section { border: 1px solid #000; border-radius: 0; margin-bottom: 15px !important;}
+        .rep-header, .rep-sub { background: #eee !important; color: #000 !important; padding: 8px 15px !important; -webkit-print-color-adjust: exact; }
+    }
+
 </style>
 </head>
 <body>
